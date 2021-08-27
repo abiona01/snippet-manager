@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../style/home.scss";
 import axios from "axios";
 import Snippet from "../components/Snippet";
 import SnippetEditor from "../components/SnippetEditor";
@@ -38,7 +39,12 @@ function Home() {
 	return (
 		<div className='home'>
 			{!snippetEditorOpen && (
-				<button onClick={() => setSnippetEditorOpen(true)}>Add Snippet</button>
+				<button
+					className='btn-toggle'
+					onClick={() => setSnippetEditorOpen(true)}
+				>
+					Add Snippet
+				</button>
 			)}
 			{snippetEditorOpen && (
 				<SnippetEditor

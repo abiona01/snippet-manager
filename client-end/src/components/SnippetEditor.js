@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../style/snippetEditor.scss";
 
 function SnippetEditor({
 	getSnippets,
@@ -71,8 +72,12 @@ function SnippetEditor({
 					value={editorCode}
 					onChange={(e) => setEditorCode(e.target.value)}
 				></textarea>
-				<button type='submit'>Save Snippet</button>
-				<button onClick={closeEditor}>Cancel</button>
+				<button className='btn-save' type='submit'>
+					Save{" "}
+				</button>
+				<button className='btn-cancel' onClick={closeEditor}>
+					Cancel
+				</button>
 			</form>
 		</div>
 	);

@@ -1,0 +1,10 @@
+@import "./mixins.scss";
+.home {
+	.btn-toggle {
+		@include btn();
+		background: var(--whitish-color);
+		box-shadow: var(--box-shadow);
+		color: var(--text-dark-color);
+		font-weight: bold;
+	}
+}

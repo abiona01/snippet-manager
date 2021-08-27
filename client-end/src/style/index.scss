@@ -1,5 +1,5 @@
 @import "./variable.scss";
-
+@import "./mixins.scss";
 * {
 	margin: 0;
 	padding: 0;
@@ -16,4 +16,28 @@ body {
 	margin: 0 auto;
 	padding: 1rem;
 	max-width: 1000px;
+}
+
+//reset
+
+button {
+	border: unset;
+	background: unset;
+	font: unset;
+	color: unset;
+	cursor: pointer;
+}
+
+a {
+	color: unset;
+	text-decoration: unset;
+	@include lnk();
+}
+
+input,
+textarea {
+	color: unset;
+	background: unset;
+	font: unset;
+	border: unset;
 }

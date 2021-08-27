@@ -1,0 +1,10 @@
+.navbar {
+	display: flex;
+	align-items: center;
+	margin-bottom: 2rem;
+	color: var(--text-dark-color);
+	a {
+		margin-right: 2rem;
+		color: unset;
+	}
+}
