@@ -4,7 +4,8 @@ import Snippet from "../components/Snippet";
 import SnippetEditor from "../components/SnippetEditor";
 function Home() {
 	const [snippets, setSnippets] = useState([]);
-	const [newSnipppetEditorOpen, setNewSnippetEditorOpen] = useState(false);
+	const [snippetEditorOpen, setSnippetEditorOpen] = useState(false);
+	const [editSnippetData, setEditSnippetData] = useState(null);
 
 	useEffect(() => {
 		getSnippets();
@@ -14,26 +15,37 @@ function Home() {
 		const response = await axios.get("http://localhost:5000/snippet/");
 		setSnippets(response.data);
 	}
+	function editSnippet(snippetData) {
+		setEditSnippetData(snippetData);
+		setSnippetEditorOpen(true);
+	}
 	function renderSnippet() {
 		let sortedSnippets = [...snippets].sort((a, b) => {
 			return new Date(b.createdAt) - new Date(a.createdAt);
 		});
 		return sortedSnippets.map((snippet, i) => {
-			return <Snippet key={i} snippet={snippet} />;
+			return (
+				<Snippet
+					key={i}
+					snippet={snippet}
+					getSnippets={getSnippets}
+					editSnippet={editSnippet}
+				/>
+			);
 		});
 	}
 
 	return (
 		<div className='home'>
-			{!newSnipppetEditorOpen && (
-				<button onClick={() => setNewSnippetEditorOpen(true)}>
-					Add Snippet
-				</button>
+			{!snippetEditorOpen && (
+				<button onClick={() => setSnippetEditorOpen(true)}>Add Snippet</button>
 			)}
-			{newSnipppetEditorOpen && (
+			{snippetEditorOpen && (
 				<SnippetEditor
-					setNewSnippetEditorOpen={setNewSnippetEditorOpen}
+					setSnippetEditorOpen={setSnippetEditorOpen}
 					getSnippets={getSnippets}
+					editSnippetData={editSnippetData}
+					setEditSnippetData={setEditSnippetData}
 				/>
 			)}
 			{renderSnippet()}
