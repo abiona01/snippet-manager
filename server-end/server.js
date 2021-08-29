@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const colors = require("colors");
 const cors = require("cors");
-
+const cookieParser = require("cookie-parser");
 const app = express();
 app.use(express.json());
 app.use(
@@ -11,9 +11,11 @@ app.use(
 		origin: "http://localhost:3000",
 	})
 );
+app.use(cookieParser());
 
 //set up routers
 app.use("/snippet", require("./routers/snippetRouter"));
+app.use("/auth", require("./routers/userRouter"));
 
 //connect to DB
 mongoose.connect(
