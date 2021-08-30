@@ -57,5 +57,45 @@ router.post("/", async (req, res) => {
 		res.status(500).send();
 	}
 });
+router.post("/login", async (req, res) => {
+	try {
+		const { email, password } = req.body;
+
+		//validation
+		if (!email || !password) {
+			return res.status(400).json({
+				errorMessage: "Enter all required fields",
+			});
+		}
+		//get user account
+		const existingUser = await User.findOne({ email });
+		if (!existingUser) {
+			return res.status(401).json({
+				errorMessage: "Wrong email or password",
+			});
+		}
+
+		//compare password
+		const correctPassword = await bcrypt.compare(
+			password,
+			existingUser.passwordHash
+		);
+		if (!correctPassword) {
+			return res.status(401).json({
+				errorMessage: "Wrong email or password",
+			});
+		}
+		//create jwt token
+		const token = jwt.sign(
+			{
+				id: existingUser._id,
+			},
+			process.env.JWT_SECRET
+		);
+		res.cookie("token", token, { httpOnly: true }).send();
+	} catch (error) {
+		res.status(500).send();
+	}
+});
 
 module.exports = router;

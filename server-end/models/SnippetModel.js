@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const snipetSchema = new mongoose.Schema(
 	{
@@ -10,6 +11,10 @@ const snipetSchema = new mongoose.Schema(
 		},
 		code: {
 			type: String,
+		},
+		user: {
+			type: ObjectId,
+			required: true,
 		},
 	},
 	{
