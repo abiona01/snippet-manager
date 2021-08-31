@@ -2,17 +2,20 @@
 .snippet {
 	@include card();
 	margin: 1.5rem 0;
+	width: 90vw;
 	.title,
 	.description,
 	.code {
 		margin-bottom: 1rem;
 	}
 	.code {
+		width: 100%;
 		padding: 0.5rem;
 		font-family: monospace;
 		font-size: 1rem;
 		background: var(--whitish-color);
 		border-radius: 5px;
+		overflow-x: scroll;
 	}
 	.btn-edit,
 	.btn-delete {

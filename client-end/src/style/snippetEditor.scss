@@ -1,28 +1,7 @@
 @import "./mixins.scss";
 .snippet-editor {
 	@include card();
-	label,
-	input,
-	textarea {
-		display: block;
-	}
-	label {
-		margin-bottom: 0.5rem;
-		font-size: 1.2rem;
-		font-weight: bold;
-	}
-	input,
-	textarea {
-		margin-bottom: 1rem;
-		padding: 0.3rem 0.5rem;
-		width: 100%;
-		background: var(--whitish-color);
-		border-radius: 5px;
-	}
-	textarea {
-		resize: none;
-		height: 200px;
-	}
+
 	.btn-save,
 	.btn-cancel {
 		@include btn();

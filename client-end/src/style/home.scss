@@ -7,4 +7,28 @@
 		color: var(--text-dark-color);
 		font-weight: bold;
 	}
+	.no-snippets-message {
+		margin-top: 2rem;
+		font-weight: bold;
+		color: var(--text-dark-color);
+	}
+	.no-user-message {
+		margin-top: 6rem;
+		color: var(--text-dark-color);
+		text-align: center;
+		h2 {
+			font-size: 2rem;
+		}
+		a {
+			@include btn();
+			margin-top: 2rem;
+			color: var(--text-dark-color);
+			display: inline-block;
+			background: var(--whitish-color);
+
+			&:hover {
+				text-decoration: unset;
+			}
+		}
+	}
 }

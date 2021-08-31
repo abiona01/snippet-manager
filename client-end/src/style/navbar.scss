@@ -1,10 +1,17 @@
+@import "./mixins.scss";
 .navbar {
 	display: flex;
 	align-items: center;
 	margin-bottom: 2rem;
 	color: var(--text-dark-color);
-	a {
+	a,
+	.btn-logout {
 		margin-right: 2rem;
 		color: unset;
+	}
+	.btn-logout {
+		@include lnk();
+		font-weight: bold;
+		color: var(--text-dark-color);
 	}
 }

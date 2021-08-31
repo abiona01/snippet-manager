@@ -3,8 +3,10 @@ import axios from "axios";
 import "../style/Snippet.scss";
 function Snippet({ snippet, getSnippets, editSnippet }) {
 	async function deleteSnippet() {
-		await axios.delete(`http://localhost:5000/snippet/${snippet._id}`);
-		getSnippets();
+		if (window.confirm("Do you want to delete this snippet?")) {
+			await axios.delete(`http://localhost:5000/snippet/${snippet._id}`);
+			getSnippets();
+		}
 	}
 
 	return (
