@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "BAckend for snippet manager",
+  "description": "Backend for snippet manager",
   "main": "server.js",
   "scripts": {
     "start": "node server",
