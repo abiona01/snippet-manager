@@ -21,7 +21,14 @@ function Snippet({ snippet, getSnippets, editSnippet }) {
           <code>{snippet.code}</code>
         </pre>
       )}
-      <button className='btn-edit' onClick={() => editSnippet(snippet)}>
+      <button
+        className='btn-edit'
+        onClick={() => {
+          editSnippet(snippet);
+          // scroll to top of page
+          window?.scrollTo(0, 0);
+        }}
+      >
         Edit
       </button>
       <button className='btn-delete' onClick={deleteSnippet}>
