@@ -25,4 +25,6 @@ mongoose.connect(
     if (err) return console.log(err);
   }
 );
+const PORT = process.env.PORT || 5500;
+
 app.listen(5500, () => console.log('Server stated on port 5000'.yellow.bold));
